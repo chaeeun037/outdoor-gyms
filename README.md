@@ -1,2 +1,2 @@
-# outdoor-gyms
-outdoor-gyms
+# outdoor-gyms-web
+outdoor-gyms-web
