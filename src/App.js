@@ -1,18 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from './logo.svg'
+import './App.css'
 import { RenderAfterNavermapsLoaded, NaverMap, Marker } from 'react-naver-maps'
 import { useState } from 'react'
 
 function NaverMapsAPI() {
-  const navermaps = window.naver.maps;
+  const navermaps = window.naver.maps
   const [center, setCenter] = useState({ lat: 37.3361804, lng: 127.124099 })
+  const [myPosition, setMyPosition] = useState({ lat: 0, lng: 0 })
 
   const handleCenterChanged = (changedCenter) => {
-    setCenter({lat: changedCenter.y, lng: changedCenter.x});
+    setCenter({ lat: changedCenter.y, lng: changedCenter.x })
   }
 
+  navigator.geolocation.watchPosition((pos) => {
+    setMyPosition({
+      lat: pos.coords.latitude,
+      lng: pos.coords.longitude,
+    })
+  }, () => null, {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 200,
+  })
+
   return (
-    <NaverMap 
+    <NaverMap
       id='maps-examples-map-simple'
       style={{
         width: '100%',
@@ -22,12 +34,15 @@ function NaverMapsAPI() {
       onCenterChanged={handleCenterChanged}
       defaultZoom={16}
     >
-      <Marker 
+      <Marker
         position={new navermaps.LatLng(center.lat, center.lng)}
-        animation={navermaps.Animation.BOUNCE}
         onClick={() => {
           alert('마커!')
         }}
+      />
+      <Marker
+        position={new navermaps.LatLng(myPosition.lat, myPosition.lng)}
+        animation={navermaps.Animation.BOUNCE}
       />
     </NaverMap>
   )
@@ -42,7 +57,7 @@ function App() {
     >
       <NaverMapsAPI />
     </RenderAfterNavermapsLoaded>
-  );
+  )
 }
 
-export default App;
+export default App
