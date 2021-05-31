@@ -1,4 +1,5 @@
 import './App.css'
+import RightPanel from './component/RightPanel.js'
 import { RenderAfterNavermapsLoaded } from 'react-naver-maps'
 import { NaverMaps } from './component/NaverMaps.js'
 
@@ -9,7 +10,9 @@ function App() {
       error={<p>Maps Load Error</p>}
       loading={<p>Maps Loading...</p>}
     >
-      <NaverMaps />
+      <NaverMaps>
+        <RightPanel />
+      </NaverMaps>
     </RenderAfterNavermapsLoaded>
   )
 }

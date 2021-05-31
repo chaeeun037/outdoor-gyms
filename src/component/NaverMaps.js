@@ -3,7 +3,7 @@ import { watchPosition } from '../helper/Gelocation.js'
 import { NaverMap, Marker } from 'react-naver-maps'
 import { useState } from 'react'
 
-export function NaverMaps() {
+export function NaverMaps(props) {
     const navermaps = window.naver.maps
     const [center, setCenter] = useState({ lat: 37.3361804, lng: 127.124099 })
     const [myPosition, setMyPosition] = useState({ lat: 0, lng: 0 })
@@ -25,6 +25,7 @@ export function NaverMaps() {
                 onCenterChanged={handleCenterChanged}
                 defaultZoom={16}
             >
+
                 <Marker
                     position={new navermaps.LatLng(center.lat, center.lng)}
                     onClick={() => {
@@ -36,6 +37,8 @@ export function NaverMaps() {
                     animation={navermaps.Animation.BOUNCE}
                 />
             </NaverMap>
+
+            {props.children}
         </div>
     )
 }

@@ -1,0 +1,7 @@
+.right-panel {
+    position: fixed;
+    top: 64px;
+    right: 64px;
+    display: flex;
+    flex-direction: column;
+}
