@@ -1,3 +1,4 @@
+import React from "react"
 import './NaverMaps.css'
 import { watchPosition } from '../helper/Gelocation.js'
 import { NaverMap, Marker } from 'react-naver-maps'

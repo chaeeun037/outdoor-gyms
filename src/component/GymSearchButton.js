@@ -4,15 +4,17 @@ import { Button, Icon } from '@material-ui/core'
 function GymSearchButton() {
     const onButtonClick = () => {
         alert('click!')
+        // redux 사용해서 marker update
     }
 
     return (
         <Button
+            className='gym-search-button'
             variant='contained'
             color='primary'
             onClick={onButtonClick}
         >
-            <Icon>search</Icon>
+            <Icon fontSize='large'>search</Icon>
         </Button>
     )
 }
